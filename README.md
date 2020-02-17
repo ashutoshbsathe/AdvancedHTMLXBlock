@@ -1,5 +1,5 @@
 # AdvancedHTMLXBlock
-Advanced HTML XBlock for OpenEdx(https://github.com/edx) [Beta]
+Advanced HTML XBlock for [OpenEdx](https://github.com/edx) [Beta]
 
 ### Features :
 - Full CSS support
@@ -37,26 +37,26 @@ Since the docker based devstack has 2 separate containers for studio and lms, yo
 
 
 ### Introduction :
-OpenEdx's current HTML component does not allow you add internal and/or external CSS(via \<link\>), also the raw HTML editor does nt save your indentation and shows a dirty minified coe.
-Even if you add <style> tag in OpenEdx html component and try to theme basic elements, the CSS will spill all over the page as shown [here](https://imgur.com/a/v1imOMd)
+OpenEdx's current HTML component does not allow you add internal and/or external CSS (via `<link>`), also the raw HTML editor does not save your indentation and shows the dirty minified code on reopening it.
+Even if you add `<style>` tag in OpenEdx html component and try to theme basic elements, the CSS will spill all over the page as shown [here](https://imgur.com/a/v1imOMd)
 
 ### So why does this happen ?
 The HTML component uses very old versions of editors TinyMCE and CodeMirror which did not support code indentation by default. Whatever content received from editors is put directly into the course without checking any tags and that is why styles spill all over the page
 
 ### How does AdvancedHTMLXblock work ?
-AdvancedHTMLXBlock essentially extends the raw HTML component of OpenEdx. This XBlock uses the latest version of CodeMirror(5.38 as of June 2018).
-Editor is configured to enable code folding/code indentation etc. All the html content received from the editor is then put into an iframe.
-The height of the iframe is chanegd on changing html content and iframe is styled so that it looks virtually absent.
+AdvancedHTMLXBlock essentially extends the raw HTML component of OpenEdx. This XBlock uses the latest version of CodeMirror (5.38 as of June 2018).
+Editor is configured to enable code folding/code indentation etc. All the html content received from the editor is then put into an `iframe`.
+The height of the `iframe` is chanegd on changing html content and `iframe` is styled so that it looks virtually absent.
 
 #### Note:
-It is required that your html and body tags have fixed height at the time of rendering. If they don't, you may see a weird scrollbar on left side of iframe. If you want to avoid it, have a fixed height for html and body.
-In case you have an animation like [this](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation_count2) where the height changes as the animation progresses, wrap the entire animation into a div capable of holding the maximum height change so that body will have fixed height
+It is required that your html and body tags have fixed height at the time of rendering. If they don't, you may see a weird scrollbar on left side of `iframe`. If you want to avoid it, have a fixed height for html and body.
+In case you have an animation like [this](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation_count2) where the height changes as the animation progresses, wrap the entire animation into a `div` capable of holding the maximum height change so that body will have fixed height
 
 #### Regarding hyperlinks in iframe :
-Xblock does not open hyperlinks in same tab, it adds `target = "_blank";` to every hyperlink on initialization which automatically opens all links in new tabs
+Xblock does not open hyperlinks in same tab, it adds `target = "_blank";` to every hyperlink on initialization which automatically opens all links in new tabs.
 
 #### A small note :
-Currently, there is no title given to iframes in LMS/ It is recommended to add the title to iframes for accessibiliy purposes, we are aware of this and the title will simply be display_name of xblock. This will be added in next release
+Currently, there is no title given to `iframe` in LMS. It is recommended to add the title to `iframe` for accessibiliy purposes, we are aware of this and the title will simply be `display_name` of xblock. This will be added in next release
 
 As mentioned [here](https://stackoverflow.com/questions/21119424/how-to-change-the-title-of-an-iframe-dynamically), javascript can be used to change the title of iframe.
 We are planning to do the same. We'll pass `display_name` along with htmlconent in student view and use javascript to set the title of iframe
