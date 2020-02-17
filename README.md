@@ -53,11 +53,11 @@ AdvancedHTMLXBlock essentially extends the raw HTML component of OpenEdx. This X
 Editor is configured to enable code folding/code indentation etc. All the html content received from the editor is then put into an `iframe`.
 The height of the `iframe` is chanegd on changing html content and `iframe` is styled so that it looks virtually absent.
 
-#### Note:
+#### Note :
 It is required that your html and body tags have fixed height at the time of rendering. If they don't, you may see a weird scrollbar on left side of `iframe`. If you want to avoid it, have a fixed height for html and body.
 In case you have an animation like [this](https://www.w3schools.com/css/tryit.asp?filename=trycss3_animation_count2) where the height changes as the animation progresses, wrap the entire animation into a `div` capable of holding the maximum height change so that body will have fixed height
 
-#### Regarding hyperlinks in iframe :
+#### Regarding hyperlinks in `iframe` :
 Xblock does not open hyperlinks in same tab, it adds `target = "_blank";` to every hyperlink on initialization which automatically opens all links in new tabs.
 
 #### A small note :
