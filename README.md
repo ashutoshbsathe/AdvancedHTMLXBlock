@@ -1,6 +1,11 @@
 # AdvancedHTMLXBlock
 Advanced HTML XBlock for [OpenEdx](https://github.com/edx) [Beta]
 
+### Contributors :
+* Ashutosh Sathe
+* Srijan Roy Choudhury
+* Pravallika Podugu
+
 ### Features :
 - Full CSS support
 - Live Preview HTML
